@@ -1,6 +1,6 @@
 package com.kaja.shop.service;
 
-import com.kaja.shop.domain.Product;
+import com.kaja.shop.domain.dao.Product;
 
 public interface ProductService {
 

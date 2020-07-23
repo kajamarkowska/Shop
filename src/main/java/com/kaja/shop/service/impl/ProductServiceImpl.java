@@ -1,6 +1,6 @@
 package com.kaja.shop.service.impl;
 
-import com.kaja.shop.domain.Product;
+import com.kaja.shop.domain.dao.Product;
 import com.kaja.shop.repository.ProductRepository;
 import com.kaja.shop.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +22,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product findProductById(Long id) {
         return productRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-        //nie moge tutaj wyzej znalesc findproductby id
+
     }
 }

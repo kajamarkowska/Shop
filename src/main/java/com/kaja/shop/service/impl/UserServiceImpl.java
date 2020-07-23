@@ -1,6 +1,6 @@
 package com.kaja.shop.service.impl;
 
-import com.kaja.shop.domain.User;
+import com.kaja.shop.domain.dao.User;
 import com.kaja.shop.repository.UserRepository;
 import com.kaja.shop.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +13,7 @@ import javax.persistence.EntityNotFoundException;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+
     @Override
     public User save(User user) {
         return userRepository.save(user);
