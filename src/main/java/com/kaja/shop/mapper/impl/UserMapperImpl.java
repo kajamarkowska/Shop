@@ -15,6 +15,7 @@ public class UserMapperImpl implements UserMapper {
                 .email(userDto.getEmail())
                 .id(userDto.getId())
                 .password(userDto.getPassword())
+                .version(userDto.getVersion())
                 .build();
     }
 
@@ -23,6 +24,7 @@ public class UserMapperImpl implements UserMapper {
         return UserDto.builder()
                 .email(user.getEmail())
                 .id(user.getId())
+                .version(user.getVersion())
                 .build();
     }
 }

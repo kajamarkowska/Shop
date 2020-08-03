@@ -4,6 +4,8 @@ import com.kaja.shop.domain.dto.UserDto;
 import com.kaja.shop.mapper.UserMapper;
 import com.kaja.shop.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -24,6 +26,11 @@ public class UserController {
     @PostMapping
     public UserDto saveUser(@RequestBody UserDto userDto) {
         return userMapper.userToUserDto(userService.save(userMapper.userDtoToUser(userDto)));
+    }
+
+    @GetMapping
+    public Page<UserDto> getUserPage(@RequestParam int page, @RequestParam int size){
+        return userService.page(PageRequest.of(page, size)).map(userMapper::userToUserDto);
     }
 
 }
