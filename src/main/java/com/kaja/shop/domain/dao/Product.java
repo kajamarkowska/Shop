@@ -27,4 +27,10 @@ public class Product {
     private boolean deleted;
     @Version
     private Long version;
+
+
+    public Product(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

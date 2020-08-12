@@ -38,7 +38,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(",")))
         ;
-        String token = Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, "key").compact();
+        String token = Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, "root").compact();
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         Map<String, String> responseBody = new HashMap<>();
         responseBody.put("token", token);
