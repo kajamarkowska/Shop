@@ -1,9 +1,7 @@
 package com.kaja.shop.config;
 
 import com.kaja.shop.domain.dao.Role;
-import com.kaja.shop.domain.dao.User;
 import com.kaja.shop.repository.RoleRepository;
-import org.mapstruct.BeanMapping;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
