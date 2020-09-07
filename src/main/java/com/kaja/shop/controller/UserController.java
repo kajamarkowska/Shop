@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -24,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDto saveUser(@RequestBody UserDto userDto) {
+    public UserDto saveUser(@RequestBody @Valid UserDto userDto) {
         return userMapper.userToUserDto(userService.save(userMapper.userDtoToUser(userDto)));
     }
 
