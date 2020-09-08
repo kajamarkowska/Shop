@@ -23,18 +23,16 @@ public class FileController {
     private final GenericFactory<FileType, StrategyGenerator> genericFactory;
 
     @GetMapping
-    ResponseEntity<byte[]> getFile(@RequestParam FileType fileType){
+    public ResponseEntity<byte[]> getFile(@RequestParam FileType fileType) {
 
         StrategyGenerator strategyGenerator = genericFactory.getByKey(fileType);
         byte[] file = strategyGenerator.generateFile();
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
-        httpHeaders.set(HttpHeaders.CONTENT_LENGTH, Integer.toString(file.length) );
-        httpHeaders.set(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=report." + fileType.name().toLowerCase() );
+        httpHeaders.set(HttpHeaders.CONTENT_LENGTH, Integer.toString(file.length));
+        httpHeaders.set(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=report." + fileType.name().toLowerCase());
         return ResponseEntity.ok().headers(httpHeaders).body(file);
     }
-
-
 
 
 }

@@ -16,14 +16,14 @@ public class GeneratorFactory {
 
     private final List<GeneratorStrategy> generatorStrategies;
 
-    private Map<FileType,GeneratorStrategy> strategyMap;
+    private Map<FileType, GeneratorStrategy> strategyMap;
 
     @PostConstruct
-    void init(){
-       strategyMap = generatorStrategies.stream().collect(Collectors.toMap(GeneratorStrategy::getFileType,generatorStrategy -> generatorStrategy));
+    void init() {
+        strategyMap = generatorStrategies.stream().collect(Collectors.toMap(GeneratorStrategy::getFileType, generatorStrategy -> generatorStrategy));
     }
 
-    public GeneratorStrategy getByKey(FileType fileType){
+    public GeneratorStrategy getByKey(FileType fileType) {
 
         return strategyMap.get(fileType);
 

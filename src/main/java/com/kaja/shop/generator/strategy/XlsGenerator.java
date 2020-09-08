@@ -1,8 +1,10 @@
 package com.kaja.shop.generator.strategy;
 
 import com.kaja.shop.generator.domain.FileType;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class XlsGenerator extends GeneratorStrategy {
 
@@ -12,7 +14,7 @@ public class XlsGenerator extends GeneratorStrategy {
 
     @Override
     public byte[] generateFile() {
-        System.out.println("Xls: ");
+        log.debug("Xls: ");
         return new byte[0];
     }
 }

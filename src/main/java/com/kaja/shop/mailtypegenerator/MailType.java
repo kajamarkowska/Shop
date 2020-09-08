@@ -1,4 +1,4 @@
-package com.kaja.shop.mailTypeGenerator;
+package com.kaja.shop.mailtypegenerator;
 
 public enum MailType {
 

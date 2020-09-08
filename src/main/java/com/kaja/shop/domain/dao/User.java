@@ -31,5 +31,5 @@ public class User {
     @Version
     private Long version;
     @ManyToMany
-    private Set <Role> roles;
+    private Set<Role> roles;
 }

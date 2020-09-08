@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 public interface ProductService {
     @CachePut(cacheNames = "product", key = "#result.id")
     Product save(Product product);
+
     @Cacheable(cacheNames = "product", key = "#id")
     Product findProductById(Long id);
 

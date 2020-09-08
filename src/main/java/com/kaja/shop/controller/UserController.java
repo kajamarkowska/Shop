@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping
-    public Page<UserDto> getUserPage(@RequestParam int page, @RequestParam int size){
+    public Page<UserDto> getUserPage(@RequestParam int page, @RequestParam int size) {
         return userService.page(PageRequest.of(page, size)).map(userMapper::userToUserDto);
     }
 

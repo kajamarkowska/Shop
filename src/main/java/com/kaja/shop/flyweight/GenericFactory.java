@@ -11,19 +11,18 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class GenericFactory <K,V extends GenericStrategy<K>> {
+public class GenericFactory<K, V extends GenericStrategy<K>> {
 
     private final List<V> strategyList;
-    // private Map<FileType, GeneratorStrategy> strategyMap;
 
-    private Map<K,V> strategyMap;
+    private Map<K, V> strategyMap;
 
     @PostConstruct
-    void init(){
+    void init() {
         strategyMap = strategyList.stream().collect(Collectors.toMap(GenericStrategy::getType, Function.identity()));
     }
 
-    public V getByKey(K type){
+    public V getByKey(K type) {
         return strategyMap.get(type);
     }
 

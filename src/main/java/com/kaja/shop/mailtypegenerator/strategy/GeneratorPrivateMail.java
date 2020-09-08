@@ -1,6 +1,6 @@
-package com.kaja.shop.mailTypeGenerator.strategy;
+package com.kaja.shop.mailtypegenerator.strategy;
 
-import com.kaja.shop.mailTypeGenerator.MailType;
+import com.kaja.shop.mailtypegenerator.MailType;
 import org.springframework.stereotype.Component;
 
 @Component

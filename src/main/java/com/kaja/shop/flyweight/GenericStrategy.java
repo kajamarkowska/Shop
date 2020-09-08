@@ -1,6 +1,6 @@
 package com.kaja.shop.flyweight;
 
-public interface GenericStrategy <T>{
+public interface GenericStrategy<T> {
 
     T getType();
 }
