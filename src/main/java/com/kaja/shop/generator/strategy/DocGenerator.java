@@ -13,7 +13,7 @@ public class DocGenerator extends GeneratorStrategy {
 
     @Override
     public byte[] generateFile() {
-        log.debug("Doc: ");
+        log.info("Doc: ");
         return new byte[0];
     }
 }

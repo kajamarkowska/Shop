@@ -13,7 +13,7 @@ public class CsvGenerator extends GeneratorStrategy {
 
     @Override
     public byte[] generateFile() {
-        log.debug("CSV:");
+        log.info("CSV:");
         return new byte[0];
     }
 }

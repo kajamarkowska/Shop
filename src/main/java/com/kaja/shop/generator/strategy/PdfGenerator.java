@@ -13,7 +13,7 @@ public class PdfGenerator extends GeneratorStrategy {
 
     @Override
     public byte[] generateFile() {
-        log.debug("Pdf: ");
+        log.info("Pdf: ");
         return new byte[0];
     }
 }

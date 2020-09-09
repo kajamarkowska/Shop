@@ -13,7 +13,7 @@ public class JsonGenerator extends GeneratorStrategy {
 
     @Override
     public byte[] generateFile() {
-        log.debug("Json: ");
+        log.info("Json: ");
         return new byte[0];
     }
 }

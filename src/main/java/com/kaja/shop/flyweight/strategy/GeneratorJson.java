@@ -21,7 +21,6 @@ public class GeneratorJson implements StrategyGenerator {
     @Override
     public byte[] generateFile() {
 
-
         try {
             return objectMapper.writeValueAsBytes(productRepository.findAll());
         } catch (JsonProcessingException e) {

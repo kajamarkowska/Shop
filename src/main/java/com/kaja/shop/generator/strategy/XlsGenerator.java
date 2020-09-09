@@ -14,7 +14,7 @@ public class XlsGenerator extends GeneratorStrategy {
 
     @Override
     public byte[] generateFile() {
-        log.debug("Xls: ");
+        log.info("Xls: ");
         return new byte[0];
     }
 }

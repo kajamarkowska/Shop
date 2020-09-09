@@ -38,11 +38,8 @@ public class GeneratorDoc implements StrategyGenerator {
                 tableRow.getCell(3).setText(product.getPrice().toString());
             });
 
-            try {
-                document.write(byteArrayOutputStream);
-            } catch (IOException e) {
-                log.error(e.getMessage(), e);
-            }
+            document.write(byteArrayOutputStream);
+
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }

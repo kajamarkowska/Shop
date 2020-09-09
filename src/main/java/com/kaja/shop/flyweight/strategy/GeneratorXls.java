@@ -23,29 +23,33 @@ public class GeneratorXls implements StrategyGenerator {
 
     @Override
     public byte[] generateFile() {
-        HSSFWorkbook workbook = new HSSFWorkbook();
-        HSSFSheet sheet = workbook.createSheet("Report");
-        HSSFRow row = sheet.createRow(0);
-        row.createCell(0).setCellValue("Id");
-        row.createCell(1).setCellValue("Name");
-        row.createCell(2).setCellValue("Price");
-        row.createCell(3).setCellValue("Quantity");
-
-        AtomicInteger i = new AtomicInteger(1);
-
-        productRepository.findAll().forEach(product -> {
-            HSSFRow rowData = sheet.createRow(i.getAndIncrement());
-            rowData.createCell(0).setCellValue(product.getId());
-            rowData.createCell(1).setCellValue(product.getName());
-            rowData.createCell(2).setCellValue(product.getPrice());
-            rowData.createCell(3).setCellValue(product.getQuantity());
-        });
-        sheet.setAutoFilter(new CellRangeAddress(0, i.get(), 0, 3));
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        try {
+        try (HSSFWorkbook workbook = new HSSFWorkbook()) {
+
+            HSSFSheet sheet = workbook.createSheet("Report");
+            HSSFRow row = sheet.createRow(0);
+            row.createCell(0).setCellValue("Id");
+            row.createCell(1).setCellValue("Name");
+            row.createCell(2).setCellValue("Price");
+            row.createCell(3).setCellValue("Quantity");
+
+            AtomicInteger i = new AtomicInteger(1);
+
+            productRepository.findAll().forEach(product -> {
+                HSSFRow rowData = sheet.createRow(i.getAndIncrement());
+                rowData.createCell(0).setCellValue(product.getId());
+                rowData.createCell(1).setCellValue(product.getName());
+                rowData.createCell(2).setCellValue(product.getPrice());
+                rowData.createCell(3).setCellValue(product.getQuantity());
+            });
+            sheet.setAutoFilter(new CellRangeAddress(0, i.get(), 0, 3));
+
+
             workbook.write(byteArrayOutputStream);
+
+
         } catch (IOException e) {
-            log.error(e.getMessage(), e);
+           log.error(e.getMessage(),e);
         }
         return byteArrayOutputStream.toByteArray();
     }
