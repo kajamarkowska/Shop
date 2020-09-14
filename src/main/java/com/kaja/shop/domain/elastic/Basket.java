@@ -17,7 +17,7 @@ import java.util.List;
 public class Basket {
     @Id
     private String id;
-    private String userId;
+    private Long userId;
 
     private List<ProductElastic> products;
 }
