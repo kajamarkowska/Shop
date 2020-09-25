@@ -19,7 +19,9 @@ public class BasketController {
 
     @PostMapping
     public void addProductToBasket(@RequestBody ProductDto productDto) {
+        System.out.println("abc");
         basketService.addToBasket(productDto);
+
     }
 
     @DeleteMapping("/{id}")
