@@ -2,6 +2,7 @@ package com.kaja.shop.config;
 
 import com.kaja.shop.domain.dao.Role;
 import com.kaja.shop.repository.RoleRepository;
+import com.kaja.shop.service.impl.WatcherServiceImpl;
 import jdk.javadoc.doclet.Doclet;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -21,16 +22,18 @@ import java.util.Optional;
 @Configuration
 public class AppConfig {
 
+
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(RoleRepository roleRepository) {
+    CommandLineRunner commandLineRunner(RoleRepository roleRepository, WatcherServiceImpl watcherServiceImpl) {
         return args -> {
             createRoleIfEmpty(roleRepository, "ROLE_USER");
             createRoleIfEmpty(roleRepository, "ROLE_ADMIN");
+            new Thread(watcherServiceImpl, "Thread").start();
         };
 
     }
