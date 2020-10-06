@@ -4,7 +4,6 @@ import com.kaja.shop.generator.domain.FileType;
 import com.kaja.shop.repository.ProductRepository;
 import com.opencsv.CSVWriter;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.StringWriter;
