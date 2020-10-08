@@ -2,7 +2,6 @@ package com.kaja.shop.controller;
 
 import com.kaja.shop.flyweight.GenericFactory;
 import com.kaja.shop.flyweight.strategy.StrategyGenerator;
-import com.kaja.shop.generator.GeneratorFactory;
 import com.kaja.shop.generator.domain.FileType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class FileController {
 
-    private final GeneratorFactory generatorFactory;
 
     private final GenericFactory<FileType, StrategyGenerator> genericFactory;
 
