@@ -37,8 +37,9 @@ public class AppConfig {
         };
 
     }
+
     @Bean
-    Docket  docket(){
+    Docket docket() {
         ParameterBuilder parameterBuilder = new ParameterBuilder();
         parameterBuilder.name("Authorization")
                 .modelRef(new ModelRef("string"))
