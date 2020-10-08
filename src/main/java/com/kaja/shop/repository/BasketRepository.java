@@ -8,6 +8,5 @@ import java.util.Optional;
 public interface BasketRepository extends ElasticsearchRepository<Basket, String> {
 
 
-
-    Optional<Basket> findByUserId (Long userId);
+    Optional<Basket> findByUserId(Long userId);
 }
