@@ -19,7 +19,7 @@ public class ProductReader {
                 .linesToSkip(1)
                 .resource(new FileSystemResource(filepath))
                 .delimited()
-                .names("name","price","quantity","description")
+                .names("name", "price", "quantity", "description")
                 .fieldSetMapper(mapper)
                 .build();
     }
