@@ -35,4 +35,9 @@ public class UserController {
         return userService.page(PageRequest.of(page, size)).map(userMapper::userToUserDto);
     }
 
+    @GetMapping("/current")
+    public UserDto getCurrentUser(){
+        return userMapper.userToUserDto(userService.getCurrentUser());
+    }
+
 }
