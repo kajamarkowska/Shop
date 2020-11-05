@@ -24,4 +24,6 @@ public class AdviceController {
     public void handleStaleObjectStateException(StaleObjectStateException e) {
         log.error(e.getMessage(), e);
     }
+
+
 }

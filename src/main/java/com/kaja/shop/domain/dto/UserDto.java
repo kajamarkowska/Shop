@@ -7,8 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 
 @Data
 @NoArgsConstructor
@@ -18,9 +17,12 @@ import javax.validation.constraints.Pattern;
 public class UserDto {
     private Long id;
     @Email(message ="Invalid email" )
+
     private String email;
-    @Length(min = 8, max = 255, message = "Invalid length password")
-    @Pattern(regexp = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?\":{}|<>]-).{5,14}")
+    @Size(min = 8, max = 255, message = "Invalid length password")
+    @Pattern(regexp = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?\":{}|<>-]).{5,14}")
+    @NotNull
+    @NotEmpty
     private String password;
     private Long version;
 }
