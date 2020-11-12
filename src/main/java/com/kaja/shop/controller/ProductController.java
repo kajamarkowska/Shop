@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/products")
@@ -29,17 +31,18 @@ public class ProductController {
     }
 
     @GetMapping
-
     public Page<ProductDto> getProductPage(@RequestParam int page, @RequestParam int size) {
-
         return productService.page(PageRequest.of(page, size)).map(productMapper::productToProductDto);
     }
 
     @DeleteMapping("/{id}")
-
     public void deleteProduct(@PathVariable Long id) {
         productService.delete(id);
     }
 
+    @GetMapping("/autocomplete")
+    public List<String> autocompleteProduct(@RequestParam String text) {
+        return productService.autocomplete(text);
+    }
 
 }
