@@ -20,6 +20,11 @@ public class UserController {
 
     private final UserMapper userMapper;
 
+    @GetMapping("/current")
+    public UserDto getCurrentUser() {
+        return userMapper.userToUserDto(userService.getCurrentUser());
+    }
+
     @GetMapping("/{id}")
     public UserDto searchUserById(@PathVariable Long id) {
         return userMapper.userToUserDto(userService.findUserById(id));
@@ -33,11 +38,6 @@ public class UserController {
     @GetMapping
     public Page<UserDto> getUserPage(@RequestParam int page, @RequestParam int size) {
         return userService.page(PageRequest.of(page, size)).map(userMapper::userToUserDto);
-    }
-
-    @GetMapping("/current")
-    public UserDto getCurrentUser(){
-        return userMapper.userToUserDto(userService.getCurrentUser());
     }
 
 }
