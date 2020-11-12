@@ -3,7 +3,6 @@ package com.kaja.shop.config;
 import com.kaja.shop.domain.dao.Role;
 import com.kaja.shop.repository.RoleRepository;
 import com.kaja.shop.service.impl.WatcherServiceImpl;
-import jdk.javadoc.doclet.Doclet;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
