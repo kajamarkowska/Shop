@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -40,5 +41,10 @@ public class ProductServiceImpl implements ProductService {
         Product product = findProductById(id);
         product.setDeleted(true);
         save(product);
+    }
+
+    @Override
+    public List<String> autocomplete(String text) {
+        return null;
     }
 }
