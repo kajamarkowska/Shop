@@ -7,6 +7,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 
 public interface ProductService {
     @CachePut(cacheNames = "product", key = "#result.id")
@@ -19,4 +21,6 @@ public interface ProductService {
 
     @CacheEvict(cacheNames = "product", key = "#id")
     void delete(Long id);
+
+    List<String> autocomplete(String text);
 }
