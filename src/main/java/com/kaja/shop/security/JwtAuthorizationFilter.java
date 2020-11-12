@@ -27,7 +27,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         String token = request.getHeader("Authorization");
-        if(token == null || !token.startsWith("Bearer ")){
+        if (token == null || !token.startsWith("Bearer ")) {
             chain.doFilter(request, response);
             return;
         }
@@ -37,13 +37,14 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                 .getBody();
 
         String email = claims.getSubject();
-        if(email != null){
+        if (email != null) {
             String authorities = claims.get("authorities", String.class);
             List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-            if(authorities != null){
-               grantedAuthorities = Arrays.stream(authorities.split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+            if (authorities != null) {
+                grantedAuthorities = Arrays.stream(authorities.split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
             }
             SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(email, null, grantedAuthorities));
-        }else response.setStatus(401);
+            chain.doFilter(request, response);
+        } else response.setStatus(401);
     }
 }
