@@ -9,3 +9,18 @@ spring:
     show-sql: true
   batch:
     initialize-schema: always
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: shopkajamessage
+    password: DFghjk21-
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+        transport:
+          protocol: smtp
+        debug: true
