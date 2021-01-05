@@ -48,7 +48,7 @@ public class AppConfig {
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.kaja.shop"))
                 .paths(PathSelectors.any())
                 .build()
                 .pathMapping("")
@@ -61,4 +61,13 @@ public class AppConfig {
             roleRepository.save(Role.builder().name(name).build());
         }
     }
+/*
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.kaja.shop"))
+                .build();
+    }
+*/
 }
