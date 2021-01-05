@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 
@@ -24,7 +23,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) {
         return userRepository.findByEmail(email)
-                .map(user -> new User(email, user.getPassword(), user.getRoles().stream()
+                .map(user -> new User(email, user.getPassword(), user.getRoles()
+                        .stream()
                         .map(role -> new SimpleGrantedAuthority(role.getName()))
                         .collect(Collectors.toSet())))
                 .orElseThrow(() -> new UsernameNotFoundException(email));
