@@ -53,4 +53,16 @@ public class UserServiceImpl implements UserService {
     public User getCurrentUser() {
         return userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).orElseThrow(EntityNotFoundException::new);
     }
+
+    @Override
+    public void deleteUserById(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public User updateUser(User user, Long id) {
+        User userDb = findUserById(id);
+        userDb.setEmail(user.getEmail());
+        return userRepository.save(userDb);
+    }
 }
