@@ -1,5 +1,6 @@
 package com.kaja.shop.controller;
 
+import com.kaja.shop.domain.dao.User;
 import com.kaja.shop.domain.dto.UserDto;
 import com.kaja.shop.mapper.UserMapper;
 import com.kaja.shop.service.UserService;
@@ -40,4 +41,13 @@ public class UserController {
         return userService.page(PageRequest.of(page, size)).map(userMapper::userToUserDto);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteUserById(@PathVariable Long id) {
+        userService.deleteUserById(id);
+    }
+
+    @PutMapping("/{id}")
+    public UserDto updateUser(@PathVariable Long id, @RequestBody UserDto userDto){
+        return userMapper.userToUserDto(userService.updateUser(userMapper.userDtoToUser(userDto),id));
+    }
 }
